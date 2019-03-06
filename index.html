@@ -7,9 +7,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
-body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
 header {
 height: 100px;
@@ -20,17 +20,199 @@ color: black;
 margin-top: 13px;
 }
 
-.cart {
-position: relative;
-}
+
 
 p, form, table, tbody, tr, td {
   float: none;
   display:block; margin:0 auto;
   text-align: center;
+  font-family: Raleway;
+}
+
+.w3-padding-64 {
+    padding-top: 0 !important;
+    padding-bottom: 64px!important;
+}
+
+.w3-padding-16 {
+    padding-top: 16px!important;
+    padding-bottom: 0 !important;
+}
+
+.w3-bar .w3-bar-item {
+    padding: 8px 16px;
+    width: auto;
+    border: none;
+    display: inline-block;
+    outline: 0;
+    
+}
+
+.w3-right {
+    float: left!important;
+}
+
+.w3-light-grey, .w3-hover-light-grey:hover, .w3-light-gray, .w3-hover-light-gray:hover {
+    color: #000!important;
+    background-color: #f1f1f1!important;
+    text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+}
+
+.right-align {
+  position: relative;
+float: right!important;
+top: -75px;
+right: 12px;
+}
+
+
+
+
+/* Typography */
+
+h1 {
+  font-size: 28px;
+  font-weight: 300;
+  flex: 1;
+}
+
+h5 {
+  font-weight: 500;
+  line-height: 1.7em;
+}
+
+h6 {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Product Layout */
+
+.product-filter {
+  display: flex;
+  padding: 30px 0;
+}
+
+.sort {
+  display: flex;
+  align-self: flex-end;
+}
+
+.collection-sort {
+ display: flex;
+  flex-direction: column;
+}
+
+.collection-sort:first-child {
+  padding-right: 20px;
+}
+
+label {
+  color: #666;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 2em;
+  text-transform: uppercase;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  
+  padding: 0.5%;
+  flex: 1 16%;
+  
+  background-color: #FFF;
+  box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.25);
+}
+
+.product-image img {
+  width: 100%;
+}
+
+.product-info {
+  margin-top: auto;
+  
+  text-align: center;
+}
+
+@media ( max-width: 920px ) {
+  
+  .product-card {
+    flex: 1 21%;
+  }
+  
+  .products .product-card:first-child, 
+  .products .product-card:nth-child(2) {
+    flex: 2 46%;
+  }
+  
+}
+
+@media ( max-width: 600px ) {
+  
+  .product-card {
+    flex: 1 46%;
+  }
+  
+}
+
+@media ( max-width: 480px ) {
   
 
+  
+  .product-filter {
+    flex-direction: column;
+  }
+  
+  .sort {
+    align-self: flex-start;
+  }
+  
 }
+
+.padding {
+  padding: 10px 20px;
+}
+
+table {
+  text-align: center;
+  margin: auto;
+  padding-bottom: 15px;
+  padding-top: 0;
+}
+
+
+
+tr
+
+td {
+  padding-top: 10px;
+  padding-bottom: 0;
+}
+
+h6 {
+  padding: 5px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-family: Montserrat;
+  }
 
 
 </style>
@@ -40,7 +222,7 @@ p, form, table, tbody, tr, td {
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-    <h3 class="w3-wide"><img class="navlogo" src="http://i64.tinypic.com/vyxrmf.png" style="height: 145px; width: 125px; margin-top: -42px;"></h3>
+    <h3 class="w3-wide"><a><img class="navlogo" src="http://i64.tinypic.com/vyxrmf.png" style="height: 165px; width: 145px; margin-top: -42px;     margin-left: 22px;"></h3>
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
     <a href="#" class="w3-bar-item w3-button">Shirts</a>
@@ -66,17 +248,31 @@ p, form, table, tbody, tr, td {
 
 <!-- Top menu on small screens -->
 <header class="w3-bar w3-top w3-hide-large w3-light-grey w3-xlarge">
-  <div class="w3-bar-item w3-padding-24 w3-wide"><a href="index.html"><img class="navlogo" src="http://i64.tinypic.com/vyxrmf.png" style="height: 145px; width: 125px; margin-top: -40px;"></div>
 
-
-<div class="cart" align="right">
- 
-</div>
-
+<!--hamburger-->
 <div>
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-</header>
+ <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" style="margin-left: 5px; margin-top: 3px;" onclick="w3_open()"><i class="fa fa-bars"></i></a>
 </div>
+
+<!--logo-->
+<div class="">
+    <a href="index.html"><img class="navlogo" src="http://i64.tinypic.com/vyxrmf.png" style="height: 195px;width: 175px;display: inline-block;margin: -45px auto;margin-right: 70px;">
+</a>
+</div>
+
+<!--shopping cart-->
+<div class="right-align">
+<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" >
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
+<input type="image" src="http://i64.tinypic.com/2rcc19s.png" style="height: 35px; width: 35px;" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="shopping cart" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+</div>
+</div>
+
+</header>
+
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -100,7 +296,7 @@ p, form, table, tbody, tr, td {
 
   <!-- Image header -->
   <div class="w3-display-container w3-container">
-    <img src="love_background.jpg" alt="man wearing love365 hat and hoodie" style="width:100%">
+    <img src="love-background.jpg" alt="man wearing love365 hat and hoodie" style="width:100%">
     <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
       <h1 class="w3-jumbo w3-hide-small">SPRING 2019</h1>
       <h1 class="w3-hide-large w3-hide-medium">SPRING 2019</h1>
@@ -109,15 +305,36 @@ p, form, table, tbody, tr, td {
     </div>
   </div>
 
-  
 
-  <!-- Product grid -->
-  <div class="w3-row" id="store">
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <img src="black_tee.jpg" style="height: 100%; width:100%">
-        <p style="display:block; margin:0 auto;">Black Tee<br><b>$24.99</b></p>
-        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display:block; margin:0 auto;">
+
+<!-- Product grid -->
+<div class="product-grid w3-container" id="store">
+  <nav class="product-filter">
+    <div class="sort">
+      <div class="collection-sort">
+        <label>Filter by:</label>
+        <select>
+          <option value="All">All</option>
+          <option value="Tees">Tees</option>
+          <option value="Longsleeves">Long Sleeves</option>
+          <option value="Hoodies">Hoodies</option>
+          <option value="Hats">Hats</option>
+        </select>
+      </div>
+      
+    </div>
+  </nav>
+  
+  <section class="products">
+    <div class="product-card Tees">
+      <div class="product-image ">
+        <img src="http://i65.tinypic.com/2cmtf5y.jpg">
+      </div>
+      <div class="product-info">
+        <h5>Black Tee</h5>
+        <h6>$24.99</h6>
+      </div>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display:block; margin:0 auto;">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="P4C9XVXBAKRUU">
 <table>
@@ -134,42 +351,17 @@ p, form, table, tbody, tr, td {
 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="display:block; margin:0 auto;">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
-
-      </div>
-      <div class="w3-container">
-        <img src="black_long.jpg" style="width:100%">
-        <p>Black Long Sleeve<br><b>$34.99</b></p>
-        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display:block; margin:0 auto;">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="JYLSTX7ZDYNMW">
-<table>
-<tr><td><input type="hidden" name="on0" value="Size">Size</td></tr><tr><td><select name="os0">
-  <option value="XS">XS </option>
-  <option value="S">S </option>
-  <option value="M">M </option>
-  <option value="L">L </option>
-  <option value="XL">XL </option>
-  <option value="XXL">XXL </option>
-  <option value="XXXL">XXXL </option>
-</select> </td></tr>
-</table>
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="display:block; margin:0 auto;">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-
-      </div>
     </div>
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <div class="w3-display-container">
-          <img src="white_tee.jpg" style="width:100%">
-          <div class="w3-display-middle w3-display-hover">
-            
-          </div>
-        </div>
-        <p>White Tee<br><b>$24.99</b></p>
-        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    
+    <div class="product-card">
+      <div class="product-image">
+        <img src="http://i64.tinypic.com/11vl02h.jpg">
+      </div>
+      <div class="product-info">
+        <h5>White Tee</h5>
+        <h6>$24.99</h6>
+      </div>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="7CLN5NJCYNUJU">
 <table>
@@ -186,12 +378,44 @@ p, form, table, tbody, tr, td {
 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="display:block; margin:0 auto;">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
-
+    </div>
+    
+    <div class="product-card">
+      <div class="product-image">
+        <img src="http://i66.tinypic.com/15ygcj7.jpg">
       </div>
-      <div class="w3-container">
-        <img src="red_long.jpg" style="width:100%">
-        <p>Red Long Sleeve<br><b>$34.99</b></p>
-        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <div class="product-info">
+        <h5>Black Long Sleeve</h5>
+        <h6>$34.99</h6>
+      </div>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display:block; margin:0 auto;">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="JYLSTX7ZDYNMW">
+<table>
+<tr><td><input type="hidden" name="on0" value="Size">Size</td></tr><tr><td><select name="os0">
+  <option value="XS">XS </option>
+  <option value="S">S </option>
+  <option value="M">M </option>
+  <option value="L">L </option>
+  <option value="XL">XL </option>
+  <option value="XXL">XXL </option>
+  <option value="XXXL">XXXL </option>
+</select> </td></tr>
+</table>
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="display:block; margin:0 auto;">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+    </div>
+    
+    <div class="product-card">
+      <div class="product-image">
+        <img src="http://i65.tinypic.com/2d7hs1k.jpg">
+      </div>
+      <div class="product-info">
+        <h5>Red Long Sleeve</h5>
+        <h6>$34.99</h6>
+      </div>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="GK4QURRPWVXZ2">
 <table>
@@ -208,15 +432,17 @@ p, form, table, tbody, tr, td {
 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="display:block; margin:0 auto;">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
-
-      </div>
     </div>
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <img src="black_hoodie.jpg" style="width:100%">
-        <p>Black Hoodie<br><b>$44.99</b></p>
-        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    
+    <div class="product-card">
+      <div class="product-image">
+        <img src="http://i68.tinypic.com/2im3jhz.jpg">
+      </div>
+      <div class="product-info">
+        <h5>Black Hoodie</h5>
+        <h6>$44.99</h6>
+      </div>
+       <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="LYWFE2K7NXVK8">
 <table>
@@ -233,49 +459,17 @@ p, form, table, tbody, tr, td {
 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="display:block; margin:0 auto;">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
-
-      </div>
-      <div class="w3-container">
-        <div class="w3-display-container">
-          <img src="black_hat.jpg" style="width:100%">
-          
-          <div class="w3-display-middle w3-display-hover">
-            
-          </div>
-        </div>
-        <p>Black Adjustable Hat<br><b>$24.99</b></p>
-        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="7K8NCF7BGBQGW">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="display:block; margin:0 auto;">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-
-      </div>
-      <div class="w3-container">
-        <div class="w3-display-container">
-          <img src="white_hat.jpg" style="width:100%">
-          
-          <div class="w3-display-middle w3-display-hover">
-            
-          </div>
-        </div>
-        <p>White Adjustable Hat<br><b>$24.99</b></p>
-        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="V5CKZ6BYCQGNA">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="display:block; margin:0 auto;">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-
-      </div>
     </div>
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <img src="gray_hoodie.jpg" style="width:100%">
-        <p>Gray Hoodie<br><b>$44.99</b></p>
-        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    
+    <div class="product-card">
+      <div class="product-image">
+        <img src="http://i67.tinypic.com/352n8xy.jpg">
+      </div>
+      <div class="product-info">
+        <h5>Gray Hoodie</h5>
+        <h6>$44.99</h6>
+      </div>
+       <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="JV7EZEEUZWAXW">
 <table>
@@ -292,23 +486,73 @@ p, form, table, tbody, tr, td {
 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="display:block; margin:0 auto;">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
-
+    </div>
+    
+    <div class="product-card">
+      <div class="product-image">
+        <img src="http://i68.tinypic.com/2n8o4sm.jpg">
       </div>
-      <div class="w3-container">
-        <img src="gray_hat.jpg" style="width:100%">
-        <p>Gray Adjustable Hat<br><b>$24.99</b></p>
-        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <div class="product-info">
+        <h5>Black Adjustable Hat</h5>
+        <h6>$24.99</h6>
+      </div>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="7K8NCF7BGBQGW">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="display:block; margin:0 auto;">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+    </div>
+    
+    <div class="product-card">
+      <div class="product-image">
+        <img src="http://i67.tinypic.com/2ymc5fb.jpg">
+      </div>
+      <div class="product-info">
+        <h5>Gray Adjustable Hat</h5>
+        <h6>$24.99</h6>
+      </div>
+       <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="PLTVURF622JBJ">
 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="display:block; margin:0 auto;">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
-
-      </div>
     </div>
+    
+    <div class="product-card">
+      <div class="product-image">
+        <img src="http://i64.tinypic.com/2qw2y68.jpg">
+      </div>
+      <div class="product-info">
+        <h5>White Adjustable Hat</h5>
+        <h6>$24.99</h6>
+      </div>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="V5CKZ6BYCQGNA">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="display:block; margin:0 auto;">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+    </div>
+    
+    
+    
+  </section>
+</div>
 
-  </div>
 
+
+
+
+
+
+
+
+
+
+
+  
   <!-- Subscribe section -->
   <div class="w3-container w3-black w3-padding-32">
     <h1>Subscribe</h1>
@@ -343,7 +587,7 @@ p, form, table, tbody, tr, td {
 
       <div class="w3-col s4 w3-justify">
         <h4>Store</h4>
-        <p><i class="fa fa-fw fa-map-marker"></i> Love365 Apparel</p>
+        <p><i class="fa fa-fw fa-map-marker"></i> LOVE365 Apparel</p>
         <p><i class="fa fa-fw fa-envelope"></i> love365@gmail.com</p>
         <h4>We accept</h4>
         <p><i class="fa fa-fw fa-cc-amex"></i> Paypal</p>
