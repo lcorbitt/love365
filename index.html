@@ -10,6 +10,186 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <style>
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+ol,
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  word-wrap: break-word;
+  width: 90%;
+  font-size: 0.85rem;
+  padding: 1.25rem 0;
+}
+
+.wrapper,
+.slideshowContainer,
+.details {
+  margin: 30px auto;
+}
+
+.slideshowContainer {
+  position: relative;
+}
+
+.slideshowContainer,
+.details {
+  max-width: 62.5rem;
+}
+
+.slide,
+.indicatorContainer {
+  line-height: 0;
+}
+
+
+.filler {
+  width: 100%;
+}
+
+.carousel-img {
+max-width: 100%; 
+max-height: 100vh;
+margin: auto;
+}
+
+.slide,
+.indicatorContainer,
+.arrow {
+  position: absolute;
+}
+
+.indicatorContainer {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.625rem 0;
+  text-align: center;
+}
+
+.indicator {
+  display: inline-block;
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.indicator,
+.arrow {
+  z-index: 200;
+}
+
+.indicator:not(:last-child) {
+  margin-right: 0.4rem;
+}
+
+.arrow {
+  top: 48%;
+  padding: 0.5rem;
+  font-size: 1.5em;
+}
+
+.prev {
+  left: 0.625rem;
+}
+
+.next {
+  right: 0.625rem;
+}
+
+.details {
+  margin-top: 1.25rem;  
+}
+
+.header {
+  font: 2.5em 'Oswald', sans-serif;
+}
+
+.detailsList {
+  font: 1.5em 'Roboto', sans-serif;  
+}
+
+.header,
+.detailsList > li:not(:last-child) {
+  margin-bottom: 0.625rem;
+}
+
+
+
+/***Colors & styles***/
+.indicator,
+.arrow {
+  -webkit-transition: all ease .2s;
+  -moz-transition: all ease .2s;
+  -o-transition: all ease .2s;
+  transition: all ease .2s;
+}
+
+.slide {
+  -webkit-transition: all ease .5s;
+  -moz-transition: all ease .5s;
+  -o-transition: all ease .5s;
+  transition: all ease .5s;
+}
+
+body {
+  background-color: #e9e9e9;
+}
+
+.slide,
+.filler {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.displayImg {
+  opacity: 1;
+  visibility: visible;
+}
+
+.indicator {
+  border: 1px solid #fff;
+  border-radius: 50%;
+  background-color: rgba(51, 51, 51, .5);
+}
+
+.indicator,
+.arrow {
+  cursor: pointer;
+  outline: none;
+}
+
+.indicatorBg {
+  background-color: #fff;
+}
+
+.indicator:hover,
+.indicator:focus {
+  background-color: #ccc;
+}
+
+.arrow {
+  color: rgba(255, 255, 255, .3);
+  border: none;
+  background-color: rgba(51, 51, 51, .1);
+}
+
+.slideshowContainer:hover > .arrow,
+.arrow:focus {
+  background-color: rgba(51, 51, 51, .9);
+  color: #fff;
+}
+
+
+
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 
 header {
@@ -223,15 +403,16 @@ h1 {
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-    <h3 class="w3-wide"><a><img class="navlogo" src="love_logo.png" style="height: 165px; width: 145px; margin-top: -42px; margin-left: 22px;"></h3>
+    <a href="index.html" class="w3-wide"><img class="navlogo" src="love_logo.png" style="height: 185px; width: 165px; margin-top: -50px; margin-left: 22px;"></a>
   </div>
-  <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+  <div class="w3-padding-64 w3-large w3-text-black" style="font-weight:bold">
     <a href="#store" class="w3-bar-item w3-button">Shop</a>
     <a href="#about" class="w3-bar-item w3-button">About</a>
+    <a href="#footer" class="w3-bar-item w3-button">Contact</a>
+    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_cart&business=ZTXSERWZ53G7L&display=1" class="w3-bar-item w3-button">View Cart</a>
+     
   </div>
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a> 
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a> 
-  <a href="#subscribe"  class="w3-bar-item w3-button w3-padding">Subscribe</a>
+
 </nav>
 
 <!-- Top menu on small screens -->
@@ -253,8 +434,8 @@ h1 {
 <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" >
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
-<input type="image" src="http://i64.tinypic.com/2rcc19s.png" style="height: 35px; width: 35px;" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="shopping cart" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+<input type="image" src="shopping-cart.png" style="height: 35px; width: 35px;" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+
 </form>
 </div>
 </div>
@@ -291,14 +472,16 @@ h1 {
       <h1 class="w3-hide-small"></h1>
      
 
-<p><button href="#store" class="w3-button w3-black w3-round-xxlarge w3-xlarge">SHOP NOW</button></p>
+<p><a href="#store"> <button target="store"class="w3-button w3-black w3-round-xxlarge w3-xlarge">SHOP NOW</button></a></p>
     </div>
   </div>
 
 
 
 <!-- Product grid -->
-<div class="product-grid w3-container" id="store">
+<div id="store" class="product-grid w3-container">
+
+  <!-- Filter
   <nav class="product-filter">
     <div class="sort">
       <div class="collection-sort">
@@ -314,6 +497,7 @@ h1 {
       
     </div>
   </nav>
+-->
   
   <section class="products">
     <div class="product-card Tees">
@@ -532,9 +716,39 @@ h1 {
 </div>
 
 
+<!--- Carousel --->
 
+<div class="wrapper">
+  <section class="slideshowContainer">
+    <article class="slide displayImg">
+      <img class="carousel-img" src="single-tan-shirt.JPG" alt="Man in tan shirt">
+    </article>
+    
+    <article class="slide">
+      <img class="carousel-img" src="two-tan-jackets.JPG" alt="Two men in tan jackets">
+    </article>
+    
+    <article class="slide">
+      <img class="carousel-img" src="jacket-closeup.JPG" alt="Close up of jacket">
+    </article>
 
-
+    <article class="slide">
+      <img class="carousel-img" src="group.JPG" alt="Three men in LOVE365 apparel">
+    </article>
+    
+    <img class="filler" src="https://www.dropbox.com/s/wj66d7nsxs7h6dz/filler.jpg?raw=1" alt="Provides the height for the slideshow container">
+    
+    <nav class="indicatorContainer">
+      <button class="indicator one indicatorBg" type="button" aria-label="Go to first image"></button>
+      <button class="indicator two" type="button" aria-label="Go to second image"></button>
+      <button class="indicator three" type="button" aria-label="Go to third image"></button>
+      <button class="indicator four" type="button" aria-label="Go to fourth image"></button>
+    </nav>  <!-- /indicatorContainer -->
+    
+    <button class="prev arrow" type="button" aria-label="Go to previous image">&laquo;</button>
+    <button class="next arrow" type="button" aria-label="Go to next image">&raquo;</button>
+  </section>  <!-- /slideshowContainer-->
+</div>  <!-- /wrapper -->
 
 
 
@@ -543,21 +757,23 @@ h1 {
 
 
   
-  <!-- Subscribe section -->
-  <div id="subscribe" class="w3-container w3-black w3-center" style="padding: 16px;">
-    <h1>BECOME A MEMBER</h1>
-    <p>To get special offers and VIP treatment:</p>
+  <!-- Subscribe section 
+  <div id="subscribe" class="w3-container w3-red w3-center" style="padding: 16px;">
+    <h1 style="color: black;">BECOME A MEMBER</h1>
+    <p style="color: black;">To get special offers and VIP treatment:</p>
+
     <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p>
     <br>
 
-<p><button type="button" id="about" class="w3-button w3-light-gray w3-round-xxlarge">Subscribe</button></p>
+<p><button type="button" id="about" class="w3-button w3-black w3-round-xxlarge">Subscribe</button></p>
 
   </div>
+  -->
 
 
-<div class="w3-container w3-red w3-padding-32 w3-center">
-  <h1 style="color: black;">ABOUT US</h1>
-    <p style="margin: 5px 5px; padding: auto; ; font-size: 14px; color: black;">LOVE365 is about sparking a conversation within the masses which may have never been said nor heard before. It's about living the life that you were so blessed with freely while spreading love while doing it. Everyone has a LOVE365 story to tell. It is just about the willingess to present that message to someone who actually might need that message and apply it to their lives. LOVE365 is about spreading love three hunder and sixty-five days of the year, while allowing others a greater understanding and new perspective to see how love has changed someone's life. LOVE365 is about bridging the gap in a world full of so much turmoil...bringing the light to where there is darkness and love where there is hate...giving people the opportunity to live freely and love unconditionally no matter race, religion, or creed...Live Free. Spread LOVE365.</p>
+<div id="about" class="w3-container w3-black w3-padding-32 w3-center">
+  <h1 style="color: white;">ABOUT US</h1>
+    <p style="margin: 5px 5px; padding: auto; ; font-size: 14px; color: white;">LOVE365 is about sparking a conversation within the masses which may have never been said nor heard before. It's about living the life that you were so blessed with freely while spreading love while doing it. Everyone has a LOVE365 story to tell. It is just about the willingess to present that message to someone who actually might need that message and apply it to their lives. LOVE365 is about spreading love three hunder and sixty-five days of the year, while allowing others a greater understanding and new perspective to see how love has changed someone's life. LOVE365 is about bridging the gap in a world full of so much turmoil...bringing the light to where there is darkness and love where there is hate...giving people the opportunity to live freely and love unconditionally no matter race, religion, or creed...Live Free. Spread LOVE365.</p>
   </div>
   
   <!-- Footer -->
@@ -571,12 +787,14 @@ h1 {
         <i class="fa fa-twitter w3-hover-opacity w3-large"></i>
         <br><br>
         <p>Questions? Go ahead.</p>
-        <form action="/action_page.php" target="_blank">
-          <p><input class="w3-input w3-border" type="text" placeholder="Name" name="Name" required></p>
-          <p><input class="w3-input w3-border" type="text" placeholder="Email" name="Email" required></p>
+        
+<!--- contact form -->
+        <form action="mail.php" method="POST" target="_blank">
+          <p><input class="w3-input w3-border" type="text" placeholder="Name" name="name" required></p>
+          <p><input class="w3-input w3-border" type="text" placeholder="Email" name="email" required></p>
           
-          <p><input class="w3-input w3-border" type="text" placeholder="Message" name="Message" required></p>
-          <button type="submit" class="w3-button w3-black w3-round-xxlarge">Send</button>
+          <p><input class="w3-input w3-border" type="text" placeholder="Message" name="message" required></p>
+          <input type="submit" class="w3-button w3-black w3-round-xxlarge">
         </form>
       </div>
 
@@ -617,6 +835,60 @@ h1 {
 </div>
 
 <script>
+  // Carousel
+(function() {
+  
+  const next = () => slideShow(currentImage+1);
+  
+  let currentImage = 0,
+      autoPlay = setInterval(next, 5000);
+      
+  const slideShow = n => {
+    const slide = document.querySelectorAll('.slide'),
+          indicator = document.querySelectorAll('.indicator');
+    
+    slide[currentImage].classList.remove('displayImg');
+    indicator[currentImage].classList.remove('indicatorBg');
+    currentImage = (n+slide.length)%slide.length;
+    slide[currentImage].classList.add('displayImg');
+    indicator[currentImage].classList.add('indicatorBg');
+  }  
+  
+  const goToImage = e => {
+    if ( e.target.classList.contains('one') ) {
+      slideShow(0);    
+    } else if ( e.target.classList.contains('two') ) {
+        slideShow(1);
+      } else if ( e.target.classList.contains('three') ) {
+          slideShow(2);
+        } else if ( e.target.classList.contains('four') ) {
+            slideShow(3);
+          } else if ( e.target.classList.contains('next') ) {
+              slideShow(currentImage+1);
+            } else if ( e.target.classList.contains('prev') ) {
+                slideShow(currentImage-1);
+              }
+  }
+  
+  const pauseSlide = () => clearInterval(autoPlay);
+  
+  const resumeSlide = () => autoPlay = setInterval(next, 5000);
+
+  /***Event Listeners***/
+  const runCode = () => {
+    const ssContainer = document.querySelector('.slideshowContainer');
+    if ( ssContainer ) {
+      ssContainer.addEventListener('mouseover', pauseSlide, false);
+      ssContainer.addEventListener('mouseout', resumeSlide, false);
+      ssContainer.addEventListener('click', goToImage, false);
+    }
+  }
+  
+  runCode();
+  
+})();
+
+
 // Accordion 
 function myAccFunc() {
   var x = document.getElementById("demoAcc");
